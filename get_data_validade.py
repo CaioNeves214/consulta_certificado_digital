@@ -46,6 +46,9 @@ def main():
     # Conexao com os bancos de dados
     local_connection, local_cursor = con_banco_local()
     remote_connection, remote_cursor = con_banco_remoto()
+    if not local_connection or not remote_connection:
+        print("Erro ao conectar aos bancos de dados")
+        return
 
     if get_empresas_local(local_cursor) == None:
         print("Nenhuma empresa encontrada")
